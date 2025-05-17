@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>edicrd</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      margin: 0; padding: 0;
+      font-family: 'Poppins', sans-serif;
+      height: 100vh;
+      background-color: #868ff3;
+      background-size: cover;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: #eee;
+    }
+    .box {
+      background: rgba(20,20,30,0.75);
+      padding: 50px 70px;
+      border-radius: 20px;
+      box-shadow: 0 0 20px rgba(98,0,255,0.8);
+      max-width: 400px;
+      width: 90%;
+      margin: auto;
+      transition: box-shadow 0.3s ease;
+    }
+    .box:hover {
+      box-shadow: 0 0 40px rgba(150,50,255,1);
+    }
+    main {
+      font-size: 42px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 20px;
+      cursor: pointer;
+      transition: color 0.3s ease, transform 0.3s ease;
+      user-select: none;
+      display: inline-block;
+    }
+    main:hover {
+      color: #fff;
+      transform: scale(1.1);
+      text-shadow: 0 0 10px #d39fff;
+    }
+    .contact {
+      font-size: 20px;
+      color: #ccc;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      width: fit-content;
+      margin: 0 auto;
+      position: relative;
+    }
+    .discord-logo {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      position: relative;
+      display: inline-block;
+      user-select: none;
+      overflow: hidden;
+    }
+    .discord-logo:hover {
+      transform: scale(1.2);
+    }
+    .discord-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+    .tooltip {
+      position: absolute;
+      bottom: 130%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #5865F2;
+      color: white;
+      padding: 5px 10px;
+      border-radius: 6px;
+      font-size: 12px;
+      white-space: nowrap;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      user-select: none;
+      z-index: 10;
+    }
+    .discord-logo:hover .tooltip {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .copy-message {
+      position: fixed;
+      top: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #5865F2;
+      color: white;
+      padding: 8px 20px;
+      border-radius: 20px;
+      font-weight: 600;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+      user-select: none;
+      z-index: 9999;
+      font-family: 'Poppins', sans-serif;
+    }
+    .copy-message.show {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+</head>
+<body>
+  <div class="box">
+    <main>Coming soon!</main>
+    <div class="contact">
+      Discord : edicrd
+      <div class="discord-logo">
+        <img src="discord.png" alt="Discord Logo" />
+        <div class="tooltip">Click to copy</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="copy-message" id="copyMessage">Copied!</div>
+
+  <script>
+    const discordLogo = document.querySelector('.discord-logo');
+    const copyMessage = document.getElementById('copyMessage');
+    const discordId = 'edicrd';
+
+    discordLogo.addEventListener('click', () => {
+      navigator.clipboard.writeText(discordId).then(() => {
+        copyMessage.classList.add('show');
+        setTimeout(() => copyMessage.classList.remove('show'), 2000);
+      }).catch(() => alert('Failed to copy!'));
+    });
+  </script>
+</body>
+</html>
